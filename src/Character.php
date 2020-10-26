@@ -37,16 +37,24 @@ class Character
 
     public function die(): void
     {
+        $this->setHealth(0);
         $this->alive = false;
     }
 
     public function attacks(Character $damaged, int $amount): void
     {
         if ($amount > $damaged->getHealth()) {
-            $damaged->setHealth(0);
+
             $damaged->die();
             return;
         }
         $damaged->setHealth($damaged->getHealth() - $amount);
+    }
+
+    public function heal(Character $healed, $ammount): void
+    {
+        if ($healed->isAlive()) {
+            $healed->setHealth($healed->getHealth + $ammount);
+        }
     }
 }
