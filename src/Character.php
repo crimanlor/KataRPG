@@ -35,8 +35,18 @@ class Character
         return $this->alive;
     }
 
-    public function attacks(Character $damaged, int $amount)
+    public function die(): void
     {
+        $this->alive = false;
+    }
+
+    public function attacks(Character $damaged, int $amount): void
+    {
+        if ($amount > $damaged->getHealth()) {
+            $damaged->setHealth(0);
+            $damaged->die();
+            return;
+        }
         $damaged->setHealth($damaged->getHealth() - $amount);
     }
 }
