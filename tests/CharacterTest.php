@@ -49,11 +49,11 @@ class CharacterTest extends TestCase
 
 		// action
 
-		$attacker->attacks();
+		$attacker->attacks($damaged, 200);
 
 		//then
-		$result = $damaged->getHealth();
+		$damagedHealth = $damaged->getHealth();
 
-		$this->assertEquals(true, $result);
+		$this->assertEquals(800, $damagedHealth);
 	}
 }

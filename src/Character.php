@@ -20,6 +20,11 @@ class Character
         return $this->health;
     }
 
+    public function setHealth(int $health): void
+    {
+        $this->health = $health;
+    }
+
     public function getLevel(): int
     {
         return $this->level;
@@ -28,5 +33,10 @@ class Character
     public function isAlive(): bool
     {
         return $this->alive;
+    }
+
+    public function attacks(Character $damaged, int $amount)
+    {
+        $damaged->setHealth($damaged->getHealth() - $amount);
     }
 }
