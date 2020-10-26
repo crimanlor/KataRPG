@@ -51,10 +51,17 @@ class Character
         $damaged->setHealth($damaged->getHealth() - $amount);
     }
 
-    public function heal(Character $healed, $ammount): void
+    public function heal(Character $healed, int $ammount): void
     {
-        if ($healed->isAlive()) {
-            $healed->setHealth($healed->getHealth + $ammount);
+        if (!$healed->isAlive()) {
+            return;
         }
+
+        if ($ammount + $healed->getHealth() > 1000) {
+            $healed->setHealth(1000);
+            return;
+        }
+
+        $healed->setHealth($healed->getHealth() + $ammount);
     }
 }

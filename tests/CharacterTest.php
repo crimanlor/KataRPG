@@ -85,4 +85,18 @@ class CharacterTest extends TestCase
 		$this->assertEquals(0, $deadHealth);
 		$this->assertEquals(false, $deadAlive);
 	}
+
+	public function test_Healing_cannot_raise_health_above_1000()
+	{
+
+		$healer = new Character();
+		$healed = new Character();
+
+		$healer->heal($healed, 100);
+
+		$healedHealth = $healed->getHealth();
+
+
+		$this->assertEquals(1000, $healedHealth);
+	}
 }
