@@ -47,7 +47,7 @@ class CharacterTest extends TestCase
 		$attacker = new Character();
 		$damaged = new Character();
 
-		// action
+		// when
 
 		$attacker->attacks(50, $damaged);
 
@@ -57,5 +57,23 @@ class CharacterTest extends TestCase
 		$this->assertEquals(950, $result);
 
 		
+	}
+
+	public function test_when_damage_greater_health_character_dies()
+	{
+		// given
+		$attacker = new Character();
+		$damaged = new Character();
+
+		// when
+		$attacker->attacks(1000, $damaged);
+
+		// then
+		$result = $damaged -> isAlive();
+		$result2 = $damaged -> getHealth();
+
+		$this->assertEquals(false, $result);
+		$this->assertEquals(0, $result2);
+
 	}
 }

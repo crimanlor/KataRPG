@@ -31,8 +31,18 @@ class Character
     }
 
     public function attacks($damage, $other): int
-    {
+    {   
+        // Daño se quita a la salud
         $other->health -= $damage;
+
+        // Salud es 0 o menos
+        if($other->getHealth()<=0)
+        {
+            // El character muere
+            $other->alive = false;
+        }
+        
         return $other-> getHealth();
     }
+
 }
