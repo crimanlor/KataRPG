@@ -29,4 +29,10 @@ class Character
     {
         return $this->alive;
     }
+
+    public function attacks($damage, $other): int
+    {
+        $other->health -= $damage;
+        return $other-> getHealth();
+    }
 }
