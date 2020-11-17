@@ -52,7 +52,7 @@ class CharacterTest extends TestCase
 		$attacker->attacks(50, $damaged);
 
 		//then
-		$result = $damaged->getHealth();
+		$damagedHealth = $damaged->getHealth();
 
 		$this->assertEquals(950, $result);
 
